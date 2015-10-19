@@ -7,6 +7,12 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.wesleyreisz.mymusic.model.Song;
+import com.wesleyreisz.mymusic.service.MockMusicService;
+
+import java.util.List;
 
 
 /**
@@ -47,10 +53,21 @@ public class MusicListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_music_list, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_music_list, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.listViewSongs);
+        List<Song> songs = new MockMusicService().findAll();
+        SongAdapter songAdapter = new SongAdapter(getActivity(), R.layout.fragment_music_list, songs);
+        listView.setAdapter(songAdapter);
+        return view;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
 
 
     @Override
