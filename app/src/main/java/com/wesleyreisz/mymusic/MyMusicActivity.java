@@ -1,6 +1,8 @@
 package com.wesleyreisz.mymusic;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,12 @@ public class MyMusicActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_music);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        MusicListFragment fragment = new MusicListFragment();
+        fragmentTransaction.add(R.id.my_music_layout, fragment, "listFragment");
+        fragmentTransaction.commit();
     }
 
 
