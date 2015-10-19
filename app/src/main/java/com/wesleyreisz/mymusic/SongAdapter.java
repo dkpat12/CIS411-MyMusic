@@ -40,7 +40,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         textViewTitle.setText(song.getSongTitle());
         TextView textViewArtist = (TextView)convertView.findViewById(R.id.textView_songArtist);
         textViewArtist.setText(song.getArtistName());
-        TextView textViewDate = (TextView)convertView.findViewById(R.id.textView_songYear);
+        TextView textViewDate = (TextView)convertView.findViewById(R.id.textView_songDate);
         textViewDate.setText(df.format(song.getSongPublishedDate()));
 
 
